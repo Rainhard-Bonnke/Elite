@@ -1,6 +1,6 @@
 # Elites Stock & Tech Solutions — Website
 
-A world-class, fully responsive inventory solutions website built with **React + Vite + Framer Motion**.
+A world-class, fully responsive inventory and tech solutions website built with **React + Vite + Framer Motion**.
 
 ---
 
