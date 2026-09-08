@@ -24,7 +24,7 @@ const serviceDropdown = [
     label: 'Tech & Digital',
     sub: 'Web, software, academic & design',
     path: '/tech-services',
-    color: '#8b5cf6',
+    color: '#2457d6',
   },
 ];
 

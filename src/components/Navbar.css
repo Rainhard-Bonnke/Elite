@@ -3,17 +3,14 @@
   top: 0; left: 0; right: 0;
   z-index: 999;
   padding: 18px 0;
-  /* Always dark at rest — visible on ALL pages */
-  background: rgba(13, 17, 23, 0.72);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  /* Always dark at rest, visible on all pages */
+  background: rgba(18, 70, 160, 0.98);
   transition: background 0.35s ease, box-shadow 0.35s ease, padding 0.3s ease;
 }
 /* On scroll → clean white */
 .navbar--scrolled {
   background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: none;
   padding: 12px 0;
   box-shadow: 0 1px 0 rgba(0,0,0,0.08), 0 4px 24px rgba(0,0,0,0.06);
 }
@@ -40,7 +37,7 @@
 }
 /* Brand always white at rest (dark bg), navy on scroll (white bg) */
 .navbar__brand {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.18rem;
   color: white;
   letter-spacing: -0.01em;
@@ -104,7 +101,7 @@
   font-size: 0.84rem;
   font-weight: 600;
   padding: 9px 20px;
-  border-radius: 100px;
+  border-radius: var(--radius-sm);
   text-decoration: none;
   flex-shrink: 0;
   transition: all 0.22s;
@@ -174,7 +171,7 @@
   font-weight: 600;
   font-size: 0.9rem;
   padding: 12px 22px;
-  border-radius: 100px;
+  border-radius: var(--radius-sm);
   text-decoration: none;
 }
 @media (max-width: 860px) {

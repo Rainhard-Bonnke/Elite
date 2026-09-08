@@ -7,33 +7,11 @@
   }
   .tech-hero__bg {
     position: absolute; inset: 0; pointer-events: none;
-    background:
-      radial-gradient(ellipse 55% 60% at 80% 20%, rgba(139,92,246,0.12) 0%, transparent 65%),
-      radial-gradient(ellipse 45% 50% at 10% 80%, rgba(232,160,32,0.1) 0%, transparent 65%);
+    background: var(--navy-mid);
   }
   .tech-hero__inner { position: relative; z-index: 2; }
-  .tech-hero__pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    background: rgba(139,92,246,0.15);
-    border: 1px solid rgba(139,92,246,0.3);
-    border-radius: 100px;
-    padding: 7px 16px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #c4b5fd;
-    letter-spacing: 0.05em;
-    margin-bottom: 24px;
-  }
-  .tech-hero__pill-dot {
-    width: 6px; height: 6px;
-    background: #a78bfa;
-    border-radius: 50%;
-    animation: pulse-dot 2s infinite;
-  }
   .tech-hero__heading {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(2.4rem, 5vw, 4.2rem);
     color: white;
     line-height: 1.07;
@@ -58,25 +36,6 @@
     flex-wrap: wrap;
     margin-bottom: 36px;
   }
-  .tech-hero__badges {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .tech-hero__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 100px;
-    padding: 6px 14px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: rgba(255,255,255,0.7);
-  }
-  .tech-hero__badge svg { color: var(--amber); }
   
   /* ── SECTION HEADER ── */
   .tech-sec__header {
@@ -84,7 +43,7 @@
     margin-bottom: 52px;
   }
   .tech-sec__heading {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(1.9rem, 3.5vw, 2.9rem);
     color: var(--text-primary);
     letter-spacing: -0.02em;
@@ -206,7 +165,7 @@
   }
   .process-card:last-child { border-right: none; }
   .process-card__step {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 2.8rem;
     color: rgba(232,160,32,0.25);
     line-height: 1;
@@ -244,16 +203,14 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--amber), #8b5cf6, #3b82f6, var(--amber));
-    background-size: 200% 100%;
-    animation: shimmer-bar 3s linear infinite;
+    background: var(--amber);
   }
   @keyframes shimmer-bar {
     0% { background-position: 0% 0; }
     100% { background-position: 200% 0; }
   }
   .tech-guarantee__heading {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(1.5rem, 2.8vw, 2.1rem);
     color: var(--text-primary);
     letter-spacing: -0.02em;

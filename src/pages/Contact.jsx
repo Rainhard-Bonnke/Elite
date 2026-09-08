@@ -29,7 +29,7 @@ export default function Contact() {
           email:   form.email,
           phone:   form.phone,
           message: form.message,
-          _subject: `New Contact Message from ${form.name} — Elites`,
+          _subject: `New Contact Message from ${form.name} Elites`,
         }),
       });
       if (res.ok) {
@@ -69,7 +69,7 @@ export default function Contact() {
             <motion.div initial={{ opacity: 0, x: -28 }} whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.65 }}>
               <h2 className="contact-info__heading">Let's Talk.</h2>
-              <p className="contact-info__sub">Whether you need a full warehouse audit or have questions about ERP solutions — we're ready.</p>
+              <p className="contact-info__sub">Whether you need a full warehouse audit or have questions about ERP solutions, we're ready.</p>
               <div className="contact-info__items">
                 <a href="tel:+254112706387" className="contact-info__item">
                   <div className="contact-info__icon"><Phone size={18} /></div>

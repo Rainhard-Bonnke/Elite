@@ -152,7 +152,7 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.12 }}>
 
-                {/* Photo — LEFT side */}
+                {/* Photo */}
                 <div className="team-card__photo">
                   <img
                     src={m.img}
@@ -165,7 +165,7 @@ export default function About() {
                   />
                 </div>
 
-                {/* Text — RIGHT side */}
+                {/* Text */}
                 <div className="team-card__body">
                   <span className="team-card__dept">{m.dept}</span>
                   <h3 className="team-card__role">{m.role}</h3>

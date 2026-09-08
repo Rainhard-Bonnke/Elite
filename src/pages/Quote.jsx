@@ -35,7 +35,7 @@ export default function Quote() {
           service: form.service,
           size:    form.size,
           details: form.details,
-          _subject: `New Quote Request: ${form.service} — ${form.name}`,
+          _subject: `New Quote Request: ${form.service} ${form.name}`,
         }),
       });
       if (res.ok) {
@@ -137,7 +137,7 @@ export default function Quote() {
                       <select className="quote-form__select" name="service" value={form.service}
                         onChange={ch} required disabled={status === 'sending'}>
                         <option value="">Select a service</option>
-                        <optgroup label="── Stock Solutions ──">
+                        <optgroup label="Stock Solutions">
                           <option>Physical Counts / Inventory Audit</option>
                           <option>Warehouse Organization</option>
                           <option>Bookkeeping Services</option>
@@ -145,7 +145,7 @@ export default function Quote() {
                           <option>Tax Compliance</option>
                           <option>Stock Analytics</option>
                         </optgroup>
-                        <optgroup label="── Tech & Digital ──">
+                        <optgroup label="Tech & Digital">
                           <option>Website Design &amp; Development</option>
                           <option>Mobile App Development</option>
                           <option>Custom Software / System</option>
@@ -164,9 +164,9 @@ export default function Quote() {
                         onChange={ch} disabled={status === 'sending'}>
                         <option value="">Select business size</option>
                         <option>Individual / Student</option>
-                        <option>Small (1–20 employees)</option>
-                        <option>Medium (21–100 employees)</option>
-                        <option>Large (101–500 employees)</option>
+                        <option>Small (1 to 20 employees)</option>
+                        <option>Medium (21 to 100 employees)</option>
+                        <option>Large (101 to 500 employees)</option>
                         <option>Enterprise (500+ employees)</option>
                       </select>
                     </div>

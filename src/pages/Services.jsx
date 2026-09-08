@@ -17,7 +17,7 @@ const svcs = [
   { icon:<BookOpen size={24}/>, num:'03', sub:'Financial Records', title:'Bookkeeping Services', desc:'Financial record management aligned with inventory movements. Every stock movement becomes an accurate financial entry.', features:['Inventory-aligned accounting','Tax compliance records','Variance documentation','Monthly reconciliations'] },
   { icon:<Cpu size={24}/>, num:'04', sub:'Tech Integration', title:'Custom ERP Systems', desc:'Real-time tracking, analytics, and complete business integration. We build ERP systems tailored to your workflow.', features:['Cloud-based dashboards','Mobile access','Custom reporting','Multi-location support'] },
   { icon:<Scale size={24}/>, num:'05', sub:'Regulatory Support', title:'Tax Compliance', desc:'Ensuring all stock meets regulatory and internal standards. We keep you ready for KRA audits and reviews.', features:['KRA compliance docs','Import/export records','Duty calculation','Audit-ready files'] },
-  { icon:<BarChart3 size={24}/>, num:'06', sub:'Data Intelligence', title:'Stock Analytics', desc:'Turning your inventory data into business intelligence — dashboards that show what\'s moving and where cash is tied up.', features:['Demand forecasting','Aging stock alerts','Reorder point setting','Supplier performance'] },
+  { icon:<BarChart3 size={24}/>, num:'06', sub:'Data Intelligence', title:'Stock Analytics', desc:'Turning your inventory data into business intelligence with dashboards that show what\'s moving and where cash is tied up.', features:['Demand forecasting','Aging stock alerts','Reorder point setting','Supplier performance'] },
 ];
 
 export default function Services() {

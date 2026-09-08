@@ -25,7 +25,7 @@ const techServices = [
     num: '01',
     cat: 'Web & Software',
     title: 'Website Design & Development',
-    desc: 'Professional, responsive websites built from scratch — business sites, portfolios, e-commerce, landing pages. Built for speed, SEO, and conversions.',
+    desc: 'Professional, responsive websites built from scratch for business sites, portfolios, e-commerce, and landing pages. Built for speed, SEO, and conversions.',
     features: ['Custom UI/UX design', 'Mobile-first responsive', 'SEO optimization', 'CMS integration'],
     color: '#3b82f6',
   },
@@ -34,9 +34,9 @@ const techServices = [
     num: '02',
     cat: 'Software Systems',
     title: 'Custom Software & ERP Systems',
-    desc: 'Bespoke software solutions tailored to your business workflow — from internal management tools to full enterprise resource planning systems.',
+    desc: 'Bespoke software solutions tailored to your business workflow, from internal management tools to full enterprise resource planning systems.',
     features: ['Requirements analysis', 'Full-stack development', 'API integrations', 'Deployment & support'],
-    color: '#8b5cf6',
+    color: '#2457d6',
   },
   {
     icon: <Smartphone size={26} />,
@@ -61,7 +61,7 @@ const techServices = [
     num: '05',
     cat: 'Academic Writing',
     title: 'Academic & Research Writing',
-    desc: 'Expert academic writing support — research proposals, university projects, dissertations, literature reviews, and internship/industrial attachment reports.',
+    desc: 'Expert academic writing support for research proposals, university projects, dissertations, literature reviews, and internship and industrial attachment reports.',
     features: ['Research proposals', 'University projects', 'Internship reports', 'Literature reviews & dissertations'],
     color: '#10b981',
   },
@@ -70,7 +70,7 @@ const techServices = [
     num: '06',
     cat: 'Professional Documents',
     title: 'CV, Resume & Cover Letters',
-    desc: 'Professionally crafted CVs, resumes, and cover letters that get noticed. Tailored for specific roles, industries, and levels — from entry to executive.',
+    desc: 'Professionally crafted CVs, resumes, and cover letters that get noticed. Tailored for specific roles, industries, and levels from entry to executive.',
     features: ['ATS-optimised CVs', 'Executive resumes', 'Cover letters', 'LinkedIn profile writing'],
     color: '#ef4444',
   },
@@ -79,7 +79,7 @@ const techServices = [
     num: '07',
     cat: 'Graphic Design',
     title: 'Graphic & Visual Design',
-    desc: 'Creative visual designs for brands, marketing, and print. Logos, flyers, social media graphics, branding kits — we make your brand look professional.',
+    desc: 'Creative visual designs for brands, marketing, and print. Logos, flyers, social media graphics, and branding kits help your brand look professional.',
     features: ['Logo & brand identity', 'Social media graphics', 'Flyers & posters', 'Pitch deck design'],
     color: '#ec4899',
   },
@@ -88,7 +88,7 @@ const techServices = [
     num: '08',
     cat: 'Consulting',
     title: 'IT Consulting & Tech Support',
-    desc: 'Expert guidance on technology decisions — software selection, system architecture, digital transformation strategy, and ongoing technical support.',
+    desc: 'Expert guidance on technology decisions, including software selection, system architecture, digital transformation strategy, and ongoing technical support.',
     features: ['Tech stack consulting', 'System architecture', 'Digital transformation', 'Ongoing IT support'],
     color: '#64748b',
   },
@@ -108,11 +108,6 @@ export default function TechServices() {
       <section className="tech-hero">
         <div className="tech-hero__bg" />
         <div className="container tech-hero__inner">
-          <motion.div className="tech-hero__pill"
-            initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <span className="tech-hero__pill-dot" />
-            Tech & Digital Division
-          </motion.div>
           <motion.h1 className="tech-hero__heading"
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}>
@@ -120,7 +115,7 @@ export default function TechServices() {
           </motion.h1>
           <motion.p className="tech-hero__sub"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.3 }}>
-            From custom software and websites to academic writing and data analysis —
+            From custom software and websites to academic writing and data analysis,
             Elites' Tech Division gives you access to expert digital services under one roof.
           </motion.p>
           <motion.div className="tech-hero__actions"
@@ -129,15 +124,6 @@ export default function TechServices() {
             <Link to="/contact" className="btn btn--outline btn--lg">Talk to Us</Link>
           </motion.div>
 
-          {/* Quick stats */}
-          <motion.div className="tech-hero__badges"
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.6 }}>
-            {['8 Service Areas', 'Fast Turnaround', 'Fixed Pricing', 'Satisfaction Guaranteed'].map(b => (
-              <span key={b} className="tech-hero__badge">
-                <CheckCircle size={13} /> {b}
-              </span>
-            ))}
-          </motion.div>
         </div>
       </section>
 
@@ -148,7 +134,7 @@ export default function TechServices() {
             <span className="eyebrow">What We Offer</span>
             <h2 className="tech-sec__heading">All Our Tech & Digital Services.</h2>
             <p className="tech-sec__sub">
-              Professional, affordable, and delivered on time — everything your business or academic journey needs.
+              Professional, affordable, and delivered on time, everything your business or academic journey needs.
             </p>
           </Reveal>
 
@@ -222,7 +208,7 @@ export default function TechServices() {
               <h3 className="tech-guarantee__heading">Your Service is Guaranteed.</h3>
               <p className="tech-guarantee__text">
                 Every project comes with a satisfaction guarantee. If you're not happy with the deliverable,
-                we revise until you are — at no extra cost.
+                we revise until you are at no extra cost.
               </p>
             </div>
             <div className="tech-guarantee__actions">

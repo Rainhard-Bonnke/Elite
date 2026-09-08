@@ -1,7 +1,8 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Clock, Zap, TrendingUp, Package, Monitor, Globe, Code, FileText, GraduationCap, BarChart2, Palette } from 'lucide-react';
+import { ArrowRight, CheckCircle, Clock, Zap, TrendingUp, Package, Monitor, Globe, Code, FileText, GraduationCap, BarChart2, Palette, Star, ExternalLink } from 'lucide-react';
 import './Home.css';
 
 const fadeUp = (delay = 0) => ({
@@ -29,7 +30,7 @@ const services = [
 const techHighlights = [
   { icon: <Globe size={20} />, title: 'Websites & Apps', desc: 'Custom websites, web apps, and mobile applications built to your spec.' },
   { icon: <GraduationCap size={20} />, title: 'Academic Writing', desc: 'Research proposals, dissertations, internship reports, and university projects.' },
-  { icon: <BarChart2 size={20} />, title: 'Data Analysis', desc: 'Excel, SPSS, R & Python — qualitative and quantitative analysis & reports.' },
+  { icon: <BarChart2 size={20} />, title: 'Data Analysis', desc: 'Excel, SPSS, R & Python for qualitative and quantitative analysis and reports.' },
   { icon: <FileText size={20} />, title: 'CVs & Documents', desc: 'ATS-ready CVs, resumes, cover letters, and professional document writing.' },
   { icon: <Palette size={20} />, title: 'Graphic Design', desc: 'Logos, branding, flyers, social media graphics, and pitch deck design.' },
   { icon: <Code size={20} />, title: 'Custom Software', desc: 'Bespoke ERP systems, management tools, and enterprise software solutions.' },
@@ -37,44 +38,77 @@ const techHighlights = [
 
 const reasons = [
   { icon: <CheckCircle size={20} />, title: 'High Accuracy', desc: 'We ensure your records are correct, minimizing losses with 99.9% precision.' },
-  { icon: <Clock size={20} />, title: 'Fast Deployment', desc: 'Our teams deploy quickly across East Africa — minimum disruption, maximum results.' },
+  { icon: <Clock size={20} />, title: 'Fast Deployment', desc: 'Our teams deploy quickly across East Africa with minimum disruption and maximum results.' },
   { icon: <Zap size={20} />, title: 'Smart Technology', desc: 'Cloud systems giving you real-time stock visibility from anywhere.' },
   { icon: <TrendingUp size={20} />, title: 'Real Value', desc: 'We help organize your business to reduce waste and improve profitability.' },
 ];
 
 const ticker = ['Physical Counts', 'Warehouse Optimization', 'Bookkeeping', 'ERP Systems', 'Website Design', 'Academic Writing', 'Data Analysis', 'CV Writing', 'Graphic Design', 'Mobile Apps'];
+const heroSlides = [
+  {
+    image: '/images/work-1.jpeg',
+    eyebrow: 'Stock inventory',
+    title: 'Warehouse accuracy you can trust.',
+    text: 'From physical stock checks to real-time visibility, we help businesses keep every item accounted for.'
+  },
+  {
+    image: '/images/work-2.jpeg',
+    eyebrow: 'Operational clarity',
+    title: 'Clean operations. Better decisions.',
+    text: 'We organize inventory flow, improve reporting, and support smarter business decisions across the supply chain.'
+  },
+  {
+    image: '/images/work-3.jpeg',
+    eyebrow: 'Digital systems',
+    title: 'Precision backed by technology.',
+    text: 'Our ERP, reporting, and operational tools turn warehouse data into action and measurable growth.'
+  },
+  {
+    image: '/images/work-4.jpeg',
+    eyebrow: 'Data driven',
+    title: 'From warehouse floor to smarter reporting.',
+    text: 'We combine stock counts, systems, and process intelligence to keep growth measurable and efficient.'
+  }
+];
 
 export default function Home() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <main>
-      {/* ── HERO — centered like ShambaChain, stats pinned to bottom ── */}
+      {/* HERO */}
       <section className="hero">
-        <div className="hero__bg" />
+        <div className="hero__slides" aria-label="Featured Elites services slideshow">
+          {heroSlides.map((slide, index) => (
+            <div
+              key={slide.title}
+              className={`hero__slide ${index === activeSlide ? 'is-active' : ''}`}
+              style={{ backgroundImage: `url(${slide.image})` }}
+            />
+          ))}
+          <div className="hero__overlay" />
+        </div>
 
         {/* Centered content */}
         <div className="hero__inner">
-          <motion.div className="hero__badge"
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.25 }}>
-            <span className="hero__badge-dot" />
-            Stock Solutions & Tech Services · East Africa
+          <motion.div
+            key={heroSlides[activeSlide].title}
+            className="hero__copy"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
+            <span className="hero__eyebrow">{heroSlides[activeSlide].eyebrow}</span>
+            <h1 className="hero__heading">{heroSlides[activeSlide].title}</h1>
+            <p className="hero__sub">{heroSlides[activeSlide].text}</p>
           </motion.div>
-
-          <motion.h1 className="hero__heading"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}>
-            Where Precision Meets <em>Growth.</em>
-          </motion.h1>
-
-          <motion.p className="hero__sub"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.55 }}>
-            Inventory management, custom software, academic writing, data analysis, and design,
-            Elites is your one-stop partner for stock solutions and professional tech services across East Africa.
-          </motion.p>
 
           <motion.div className="hero__actions"
             initial={{ opacity: 0, y: 18 }}
@@ -85,9 +119,21 @@ export default function Home() {
             </Link>
             <Link to="/services" className="btn btn--outline btn--lg">View Services</Link>
           </motion.div>
+
+          <div className="hero__dots" aria-label="Hero slide navigation">
+            {heroSlides.map((slide, index) => (
+              <button
+                key={slide.eyebrow}
+                type="button"
+                className={`hero__dot ${index === activeSlide ? 'is-active' : ''}`}
+                aria-label={`Show slide ${index + 1}`}
+                onClick={() => setActiveSlide(index)}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* Stats bar — full width at very bottom of hero, like ShambaChain */}
+        {/* Stats bar */}
         <motion.div className="hero__stats"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -133,7 +179,6 @@ export default function Home() {
                 whileHover={{ rotate: 0, transition: { duration: 0.3 } }}>
                 <img src="/images/team-2.jpeg" alt="Stock audit process" />
               </motion.div>
-              <div className="mission__badge">✓ Verified Experts</div>
             </div>
 
             <Reveal>
@@ -143,7 +188,7 @@ export default function Home() {
               </h2>
               <div className="divider" />
               <p className="mission__text">
-                We're not just counters — we're your business partners. From inventory audits and ERP systems
+                We're not just counters, we're your business partners. From inventory audits and ERP systems
                 to website development, academic writing, and data analysis, Elites delivers precision across
                 everything we touch.
               </p>
@@ -161,11 +206,11 @@ export default function Home() {
           <Reveal className="divisions__header">
             <span className="eyebrow">Two Divisions. One Team.</span>
             <h2 className="divisions__heading">Everything Your Business Needs.</h2>
-            <p className="divisions__sub">Elites operates two complementary service divisions — choose the one you need, or combine both for end-to-end support.</p>
+            <p className="divisions__sub">Elites operates two complementary service divisions, choose the one you need, or combine both for end-to-end support.</p>
           </Reveal>
 
           <div className="divisions__grid">
-            {/* Division 1 — Stock */}
+            {/* Division 1 */}
             <motion.div className="division-card division-card--stock"
               initial={{ opacity: 0, x: -32 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -175,7 +220,6 @@ export default function Home() {
               <div className="division-card__icon division-card__icon--stock">
                 <Package size={28} />
               </div>
-              <div className="division-card__pill division-card__pill--stock">Division 01</div>
               <h3 className="division-card__title">Stock Solutions</h3>
               <p className="division-card__desc">
                 Physical inventory audits, warehouse organization, bookkeeping, tax compliance, and custom ERP systems.
@@ -194,7 +238,7 @@ export default function Home() {
               </Link>
             </motion.div>
 
-            {/* Division 2 — Tech */}
+            {/* Division 2 */}
             <motion.div className="division-card division-card--tech"
               initial={{ opacity: 0, x: 32 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -204,7 +248,6 @@ export default function Home() {
               <div className="division-card__icon division-card__icon--tech">
                 <Monitor size={28} />
               </div>
-              <div className="division-card__pill division-card__pill--tech">Division 02</div>
               <h3 className="division-card__title">Tech & Digital</h3>
               <p className="division-card__desc">
                 Website design, mobile apps, custom software, academic writing, data analysis, CV writing, and graphic design.
@@ -235,7 +278,7 @@ export default function Home() {
               <h2 className="services-preview__heading">What We Do.</h2>
             </div>
             <p className="services-preview__sub">
-              Complete inventory management — from physical audits to financial records, warehouse optimization, and advanced ERP systems.
+              Complete inventory management from physical audits to financial records, warehouse optimization, and advanced ERP systems.
             </p>
           </div>
 
@@ -289,7 +332,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── TESTIMONIAL ── */}
+      {/* ── GOOGLE REVIEWS ── */}
       <section className="testimonial section--sm">
         <div className="container">
           <motion.div className="testimonial__card"
@@ -297,16 +340,31 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65 }}>
-            <div className="testimonial__quote">"</div>
+            <div className="google-review__header">
+              <div className="google-review__brand"><span className="google-review__g">G</span> Google Reviews</div>
+              <span className="google-review__verified">Google profile</span>
+            </div>
+            <div className="google-review__summary">
+              <div className="google-review__score">5.0</div>
+              <div>
+                <div className="google-review__stars" aria-label="5 out of 5 stars">
+                  {[1, 2, 3, 4, 5].map(star => <Star key={star} size={18} fill="currentColor" />)}
+                </div>
+                <div className="google-review__count">Based on client reviews</div>
+              </div>
+            </div>
             <blockquote className="testimonial__text">
-              Elites didn't just count our inventory — they rebuilt our entire warehouse logic, uncovered hidden stock losses, and gave us a system we actually trust.
+              “Elites gave us clarity across our warehouse and the confidence to make better decisions. Thorough, responsive, and easy to work with.”
             </blockquote>
             <div className="testimonial__author">
               <div className="testimonial__avatar">S</div>
               <div>
                 <div className="testimonial__name">Strategic Partner</div>
-                <div className="testimonial__role">Retail Giant Kenya</div>
+                <div className="testimonial__role">Retail client · Nairobi</div>
               </div>
+              <a className="google-review__link" href="https://www.google.com/search?q=Elites+Stock+%26+Tech+Solutions" target="_blank" rel="noreferrer">
+                Read on Google <ExternalLink size={14} />
+              </a>
             </div>
           </motion.div>
         </div>
@@ -321,7 +379,7 @@ export default function Home() {
               <h2 className="tech-hl__heading">Need Digital Services?</h2>
             </div>
             <p className="tech-hl__sub">
-              Beyond stock — our Tech Division delivers professional digital work with fast turnaround and guaranteed satisfaction.
+              Beyond stock, our Tech Division delivers professional digital work with fast turnaround and guaranteed satisfaction.
             </p>
           </div>
           <div className="tech-hl__grid">

@@ -28,7 +28,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Stock Solutions — own column */}
+        {/* Stock Solutions */}
         <div>
           <div className="footer__col-title">Stock Solutions</div>
           <ul className="footer__links">
@@ -38,7 +38,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Tech & Digital — own column, sits between Stock and Operational Support */}
+        {/* Tech & Digital */}
         <div className="footer__col--tech">
           <div className="footer__col-title footer__col-title--tech">Tech &amp; Digital</div>
           <ul className="footer__links">
@@ -55,9 +55,6 @@ export default function Footer() {
             <li><a href="mailto:elitessolutions3@gmail.com" className="footer__contact-item"><Mail size={14}/>elitessolutions3@gmail.com</a></li>
             <li><span className="footer__contact-item"><MapPin size={14}/>Nairobi, Kenya</span></li>
           </ul>
-          <div className="footer__guarantee">
-            <span className="footer__guarantee-badge">✓ Your Service is Guaranteed</span>
-          </div>
         </div>
       </div>
 

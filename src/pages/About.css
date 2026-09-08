@@ -9,14 +9,14 @@
   position: absolute;
   top: -100px; right: -80px;
   width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(232,160,32,0.1) 0%, transparent 70%);
+  background: var(--navy-mid);
   border-radius: 50%;
   pointer-events: none;
 }
 .page-hero__eyebrow { color: var(--amber-light); }
 .page-hero__eyebrow::before { background: var(--amber-light); }
 .page-hero__heading {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(2.4rem, 5vw, 4rem);
   color: white;
   line-height: 1.08;
