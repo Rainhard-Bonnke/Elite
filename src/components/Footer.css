@@ -95,6 +95,6 @@ a.footer__contact-item:hover { color: white; }
   .footer__col--tech { display: block; }
 }
 @media (max-width: 560px) {
-  .footer__top { grid-template-columns: 1fr; gap: 24px; }
+  .footer__top { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 14px; }
   .footer__bottom { flex-direction: column; gap: 8px; }
 }
