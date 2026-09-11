@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Clock, Zap, TrendingUp, Package, Monitor, Globe, Code, FileText, GraduationCap, BarChart2, Palette, Star, ExternalLink } from 'lucide-react';
+import { ArrowRight, CheckCircle, Clock, Zap, TrendingUp, Package, Monitor, Globe, Code, FileText, GraduationCap, BarChart2, Palette, Star, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import './Home.css';
 
 const fadeUp = (delay = 0) => ({
@@ -371,35 +371,42 @@ export default function Home() {
               </div>
             </div>
             <div className="testimonial__viewport" aria-live="polite">
-              <motion.blockquote
-                key={reviews[activeReview].name}
-                className="testimonial__text"
-                initial={{ opacity: 0, x: 24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.35 }}>
-                “{reviews[activeReview].text}”
-              </motion.blockquote>
-            </div>
-            <div className="testimonial__author">
-              <div className="testimonial__avatar">{reviews[activeReview].initial}</div>
-              <div>
-                <div className="testimonial__name">{reviews[activeReview].name}</div>
-                <div className="testimonial__role">{reviews[activeReview].role} · Nairobi</div>
+              <div className="testimonial__track" style={{ transform: `translateX(-${activeReview * 20}%)` }}>
+                {reviews.map((review) => (
+                  <article className="testimonial__slide" key={review.name}>
+                    <blockquote className="testimonial__text">“{review.text}”</blockquote>
+                    <div className="testimonial__author">
+                      <div className="testimonial__avatar">{review.initial}</div>
+                      <div>
+                        <div className="testimonial__name">{review.name}</div>
+                        <div className="testimonial__role">{review.role} · Nairobi</div>
+                      </div>
+                      <a className="google-review__link" href="https://www.google.com/search?q=Elites+Stock+%26+Tech+Solutions" target="_blank" rel="noreferrer">
+                        Read on Google <ExternalLink size={14} />
+                      </a>
+                    </div>
+                  </article>
+                ))}
               </div>
-              <a className="google-review__link" href="https://www.google.com/search?q=Elites+Stock+%26+Tech+Solutions" target="_blank" rel="noreferrer">
-                Read on Google <ExternalLink size={14} />
-              </a>
             </div>
-            <div className="testimonial__dots" aria-label="Review navigation">
-              {reviews.map((review, index) => (
-                <button
-                  key={review.name}
-                  type="button"
-                  className={`testimonial__dot ${index === activeReview ? 'is-active' : ''}`}
-                  aria-label={`Show review ${index + 1}`}
-                  onClick={() => setActiveReview(index)}
-                />
-              ))}
+            <div className="testimonial__controls">
+              <button type="button" className="testimonial__arrow" aria-label="Previous review" onClick={() => setActiveReview((activeReview + reviews.length - 1) % reviews.length)}>
+                <ChevronLeft size={18} />
+              </button>
+              <div className="testimonial__dots" aria-label="Review navigation">
+                {reviews.map((review, index) => (
+                  <button
+                    key={review.name}
+                    type="button"
+                    className={`testimonial__dot ${index === activeReview ? 'is-active' : ''}`}
+                    aria-label={`Show review ${index + 1}`}
+                    onClick={() => setActiveReview(index)}
+                  />
+                ))}
+              </div>
+              <button type="button" className="testimonial__arrow" aria-label="Next review" onClick={() => setActiveReview((activeReview + 1) % reviews.length)}>
+                <ChevronRight size={18} />
+              </button>
             </div>
           </motion.div>
         </div>

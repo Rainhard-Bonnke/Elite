@@ -96,5 +96,11 @@ a.footer__contact-item:hover { color: white; }
 }
 @media (max-width: 560px) {
   .footer__top { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 14px; }
+  .footer__top > div:first-child { grid-column: 1 / -1; text-align: center; }
+  .footer__logo { justify-content: center; }
+  .footer__desc { max-width: 100%; margin: 0 auto; }
+  .footer__col-title { text-align: center; }
+  .footer__links, .footer__contact-list { align-items: center; text-align: center; }
+  .footer__contact-item { justify-content: center; text-align: left; }
   .footer__bottom { flex-direction: column; gap: 8px; }
 }
