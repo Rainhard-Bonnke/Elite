@@ -399,7 +399,8 @@
   margin-bottom: 40px;
 }
 .testimonial__viewport { overflow: hidden; }
-.testimonial__track { display: flex; width: 500%; transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1); }
+.testimonial__track { display: flex; width: 500%; touch-action: pan-y; cursor: grab; transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1); }
+.testimonial__track:active { cursor: grabbing; }
 .testimonial__slide { width: 20%; flex-shrink: 0; padding-right: 1px; }
 .testimonial__author {
   justify-content: flex-start; gap: 14px;

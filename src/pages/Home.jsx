@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
@@ -82,6 +82,7 @@ const reviews = [
 export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeReview, setActiveReview] = useState(0);
+  const reviewDragStart = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -358,8 +359,8 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.65 }}>
             <div className="google-review__header">
-              <div className="google-review__brand"><span className="google-review__g">G</span> Google Reviews</div>
-              <span className="google-review__verified">Google profile</span>
+              <div className="google-review__brand"><span className="google-review__g">G</span> Client Reviews</div>
+              <span className="google-review__verified">Review highlights</span>
             </div>
             <div className="google-review__summary">
               <div className="google-review__score">5.0</div>
@@ -367,11 +368,26 @@ export default function Home() {
                 <div className="google-review__stars" aria-label="5 out of 5 stars">
                   {[1, 2, 3, 4, 5].map(star => <Star key={star} size={18} fill="currentColor" />)}
                 </div>
-                <div className="google-review__count">Based on client reviews</div>
+                <div className="google-review__count">Five client feedback highlights</div>
               </div>
             </div>
             <div className="testimonial__viewport" aria-live="polite">
-              <div className="testimonial__track" style={{ transform: `translateX(-${activeReview * 20}%)` }}>
+              <div
+                className="testimonial__track"
+                style={{ transform: `translateX(-${activeReview * 20}%)` }}
+                onPointerDown={(event) => {
+                  event.currentTarget.setPointerCapture(event.pointerId);
+                  reviewDragStart.current = event.clientX;
+                }}
+                onPointerUp={(event) => {
+                  if (reviewDragStart.current === null) return;
+                  const distance = event.clientX - reviewDragStart.current;
+                  if (Math.abs(distance) > 45) {
+                    setActiveReview((current) => (current + (distance < 0 ? 1 : reviews.length - 1)) % reviews.length);
+                  }
+                  reviewDragStart.current = null;
+                }}
+                onPointerCancel={() => { reviewDragStart.current = null; }}>
                 {reviews.map((review) => (
                   <article className="testimonial__slide" key={review.name}>
                     <blockquote className="testimonial__text">“{review.text}”</blockquote>
