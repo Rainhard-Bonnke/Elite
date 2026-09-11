@@ -62,4 +62,4 @@
 .svc-cta__sub { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 36px; }
 
 @media (max-width: 1024px) { .svc-full-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .svc-full-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .svc-full-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }

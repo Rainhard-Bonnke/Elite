@@ -17,12 +17,12 @@
 }
 .footer__logo-icon {
   width: 34px; height: 34px;
-  background: var(--amber);
   border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
-  color: var(--navy);
+  overflow: hidden;
   flex-shrink: 0;
 }
+.footer__logo-icon img { width: 34px; height: 34px; display: block; }
 .footer__logo-name {
   font-family: 'DM Serif Display', serif;
   font-size: 1.05rem;

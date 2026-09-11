@@ -398,6 +398,7 @@
   line-height: 1.55;
   margin-bottom: 40px;
 }
+.testimonial__viewport { min-height: 124px; overflow: hidden; }
 .testimonial__author {
   justify-content: flex-start; gap: 14px;
 }
@@ -417,6 +418,9 @@
 .testimonial__role { font-size: 0.75rem; color: var(--amber); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 2px; }
 .google-review__link { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; color: var(--copper); font-size: 0.78rem; font-weight: 700; text-decoration: none; }
 .google-review__link:hover { color: var(--text-primary); }
+.testimonial__dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+.testimonial__dot { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; background: #c6d1dc; cursor: pointer; transition: all 0.2s ease; }
+.testimonial__dot.is-active { width: 22px; border-radius: 4px; background: #4285f4; }
 
 /* ── CTA BAND ── */
 .cta-band {
@@ -472,7 +476,8 @@
   .google-review__link { margin-left: 62px; }
 }
 @media (max-width: 600px) {
-  .services-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .why__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .hero__stats { gap: 24px; }
 }
 
@@ -624,11 +629,11 @@
 }
 
 @media (max-width: 860px) {
-  .divisions__grid { grid-template-columns: 1fr; }
+  .divisions__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .tech-hl__header { flex-direction: column; align-items: flex-start; }
   .tech-hl__grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 560px) {
-  .tech-hl__grid { grid-template-columns: 1fr; }
+  .tech-hl__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .division-card { padding: 28px 22px; }
 }

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Box, Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 import './Footer.css';
 
 export default function Footer() {
@@ -8,7 +8,9 @@ export default function Footer() {
       <div className="footer__top container">
         <div>
           <Link to="/" className="footer__logo">
-            <div className="footer__logo-icon"><Box size={15} /></div>
+            <div className="footer__logo-icon">
+              <img src="/logo.svg" alt="Elites logo" width="34" height="34" />
+            </div>
             <div>
               <div className="footer__logo-name">Elites</div>
               <span className="footer__logo-sub">SOLUTIONS</span>

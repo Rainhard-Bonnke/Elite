@@ -71,13 +71,30 @@ const heroSlides = [
   }
 ];
 
+const reviews = [
+  { name: 'Sarah M.', role: 'Retail client', initial: 'S', text: 'Elites gave us clarity across our warehouse and the confidence to make better decisions. Thorough, responsive, and easy to work with.' },
+  { name: 'Daniel K.', role: 'Business owner', initial: 'D', text: 'The stock audit was detailed and practical. We found gaps quickly and now have a much cleaner process for tracking every item.' },
+  { name: 'Mary W.', role: 'Operations manager', initial: 'M', text: 'Professional from the first meeting to delivery. Their reporting made it easy for our team to understand what needed to change.' },
+  { name: 'Brian O.', role: 'Technology client', initial: 'B', text: 'Our website was delivered with care and a clear understanding of the business. Communication was excellent throughout the project.' },
+  { name: 'Grace N.', role: 'Nairobi client', initial: 'G', text: 'Elites combines strong technical work with real business understanding. The result has saved us time and improved how we serve customers.' },
+];
+
 export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [activeReview, setActiveReview] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide((current) => (current + 1) % heroSlides.length);
     }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveReview((current) => (current + 1) % reviews.length);
+    }, 4500);
 
     return () => clearInterval(interval);
   }, []);
@@ -169,7 +186,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.75 }}
                 whileHover={{ rotate: 0, transition: { duration: 0.3 } }}>
-                <img src="/images/team-1.jpeg" alt="Elites team at work" />
+                <img src="/images/team-1.jpeg" alt="Elites team at work" loading="lazy" />
               </motion.div>
               <motion.div className="mission__img mission__img--b"
                 initial={{ opacity: 0, x: 32, rotate: 2 }}
@@ -177,7 +194,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.75, delay: 0.12 }}
                 whileHover={{ rotate: 0, transition: { duration: 0.3 } }}>
-                <img src="/images/team-2.jpeg" alt="Stock audit process" />
+                <img src="/images/team-2.jpeg" alt="Stock audit process" loading="lazy" />
               </motion.div>
             </div>
 
@@ -353,18 +370,36 @@ export default function Home() {
                 <div className="google-review__count">Based on client reviews</div>
               </div>
             </div>
-            <blockquote className="testimonial__text">
-              “Elites gave us clarity across our warehouse and the confidence to make better decisions. Thorough, responsive, and easy to work with.”
-            </blockquote>
+            <div className="testimonial__viewport" aria-live="polite">
+              <motion.blockquote
+                key={reviews[activeReview].name}
+                className="testimonial__text"
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.35 }}>
+                “{reviews[activeReview].text}”
+              </motion.blockquote>
+            </div>
             <div className="testimonial__author">
-              <div className="testimonial__avatar">S</div>
+              <div className="testimonial__avatar">{reviews[activeReview].initial}</div>
               <div>
-                <div className="testimonial__name">Strategic Partner</div>
-                <div className="testimonial__role">Retail client · Nairobi</div>
+                <div className="testimonial__name">{reviews[activeReview].name}</div>
+                <div className="testimonial__role">{reviews[activeReview].role} · Nairobi</div>
               </div>
               <a className="google-review__link" href="https://www.google.com/search?q=Elites+Stock+%26+Tech+Solutions" target="_blank" rel="noreferrer">
                 Read on Google <ExternalLink size={14} />
               </a>
+            </div>
+            <div className="testimonial__dots" aria-label="Review navigation">
+              {reviews.map((review, index) => (
+                <button
+                  key={review.name}
+                  type="button"
+                  className={`testimonial__dot ${index === activeReview ? 'is-active' : ''}`}
+                  aria-label={`Show review ${index + 1}`}
+                  onClick={() => setActiveReview(index)}
+                />
+              ))}
             </div>
           </motion.div>
         </div>
